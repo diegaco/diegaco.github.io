@@ -1,10 +1,148 @@
+/*------------------------------------*\
+    #PERSONAL SITE 
+\*------------------------------------*/
 
+/**
+ * CONTENTS
+ *
+ * SETTINGS
+ * Default..............inuitcss’ default settings.
+ * Global...............Global variables and settings/config.
+ * Colors...............Color pallete.
+ * Responsive...........inuitcss set up and name our breakpoints.
+ *
+ * TOOLS
+ * Functions............inuitcss’ default functions.
+ * Mixins...............inuitcss’ default mixins.
+ * Mixins...............Our extension of inuitcss’ mixins.
+ * Responsive...........Responsive tooling (requires responsive settings).
+ * Aliases..............Aliases onto longer inuitcss variables and mixins.
+ *
+ * GENERIC
+ * Normalize.css........A level playing field.
+ * Reset................A pared back reset to remove margins.
+ * Box-sizing...........Better default box-sizing.
+ * Shared...............Sensibly and tersely share global commonalities.
+ *
+ * BASE
+ * Page.................Page-level styles (HTML element).
+ * Page.................Our extension of the inuitcss page module.
+ * Headings.............Heading styles
+ * Type.................Misc type styles
+ * Links................Hyperlink styles
+ * Lists................inuitcss list styles.
+ * Images...............inuitcss images
+ * Quotes...............Styling for blockquotes, etc.
+ *
+ * OBJECTS
+ * Wrappers.............Wrappers and page constraints.
+ * Buttons..............inuitcss’ buttons module.
+ * Layout...............inuitcss’ layout tool.
+ * Box..................inuitcss’ box object.
+ * Media................The media object.
+ * Flag.................The flag object.
+ * UI list..............inuitcss’ UI list.
+ *
+ * COMPONENTS
+ * Page-head............Page header styles.
+ * Bands................Full-width page bands.
+ * Promo................Lead promo blocks on the home page.
+ * Page-foot............Page footer styles.
+ * Page-micro...........Page copyright styles.
+ * Site-nav.............Site’s main nav area.
+ * Buttons..............Extension of inuitcss’ buttons.
+ * Boxes................Extension of inuitcss’ box object
+ * Post.................Post-specific styles.
+ * Pull-quote...........Large, featured quotes.
+ * Carousel.............Pure CSS carousel component.
+ * Iconic...............Iconic icon styles.
+ * Sprites..............Image sprite styles.
+ * Feature list.........Big blocky lists of feature items.
+ * Annotate.............Pure CSS figure annotations.
+ * Ads..................AdPacks overrides.
+ * Client-list..........Amazing people I’ve had the pleasure of working with.
+ *
+ * TRUMPS
+ * Clearfix.............I can’t believe we still need this in 2014.
+ * Widths...............Simple width helper classes.
+ * Widths-responsive....Polyfill for responsive width classes.
+ * Spacing..............Micro-level spacing.
+ * Show/hide............Helpers to show and side stuff.
+ */
+
+
+
+
+/**
+* #SETTINGS
+*/
 @import "bower_components/inuit-defaults/settings.defaults";
+@import "bower_components/inuit-responsive-settings/settings.responsive";
 
+
+
+
+
+/**
+* #TOOLS
+*/
 @import "bower_components/inuit-functions/tools.functions";
 @import "bower_components/inuit-mixins/tools.mixins";
+@import "bower_components/inuit-responsive-tools/tools.responsive";
+@import "bower_components/inuit-tools-widths/tools.widths";
 
+
+
+
+
+/**
+* #GENERIC
+*/
 @import "bower_components/inuit-normalize/generic.normalize";
+@import "bower_components/inuit-reset/generic.reset";
 @import "bower_components/inuit-box-sizing/generic.box-sizing";
 
+
+
+
+
+/**
+* #BASE
+*/
 @import "bower_components/inuit-page/base.page";
+@import "bower_components/inuit-paragraphs/base.paragraphs";
+@import "bower_components/inuit-headings/base.headings";
+@import "bower_components/inuit-lists/base.lists";
+@import "bower_components/inuit-images/base.images";
+
+
+
+
+
+/**
+* #OBJECTS
+*/
+
+
+
+
+
+/**
+* #COMPONENTS
+*/
+
+
+
+
+
+/**
+* #TRUMPS
+*/
+@import "bower_components/inuit-widths/trumps.widths";
+@import "bower_components/inuit-widths-responsive/trumps.widths-responsive";
+@import "bower_components/inuit-clearfix/trumps.clearfix";
+
+
+
+
+
