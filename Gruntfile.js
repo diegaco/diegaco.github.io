@@ -37,12 +37,17 @@ module.exports = function(grunt) {
         options: {
           base: './',
           css: [
-            'labs/performanceTest/css/style.css'
+            'labs/performanceTest/css/style.css',
+            'labs/performanceTest/css/print.css'
           ],
+          inline: true,
+          //minify: true,
+          extract: true,
+          ignore: '@font-face',
           width: 1300,
           height: 900
         },
-        src: 'labs/performanceTest/index.html',
+        src: 'labs/performanceTest/index-critical-source.html',
         dest: 'labs/performanceTest/index-critical.html'
       }
     }
