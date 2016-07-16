@@ -35,7 +35,7 @@ module.exports = function(grunt) {
     critical: {
       test: {
         options: {
-          base: './',
+          base: 'labs/performanceTest/',
           css: [
             'labs/performanceTest/css/style.css',
             'labs/performanceTest/css/print.css'
@@ -44,8 +44,8 @@ module.exports = function(grunt) {
           //minify: true,
           extract: true,
           ignore: '@font-face',
-          width: 1300,
-          height: 900
+          width: 1440,
+          height: 400
         },
         src: 'labs/performanceTest/index-critical-source.html',
         dest: 'labs/performanceTest/index-critical.html'

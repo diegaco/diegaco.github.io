@@ -1,0 +1,81 @@
+/* latin */
+
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Open Sans'), local('OpenSans'), url(https://fonts.gstatic.com/s/opensans/v13/cJZKeOuBrn4kERxqtaUH3ZBw1xU1rKptJj_0jans920.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+
+/* latin */
+
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Open Sans Bold'), local('OpenSans-Bold'), url(https://fonts.gstatic.com/s/opensans/v13/k3k702ZOKiLJc3WVjuplzBampu5_7CjHW5spxoeN3Vs.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+
+html {
+  font-size: 100%;
+  overflow-y: scroll;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: none;
+}
+
+button,
+input,
+select,
+textarea {
+  font-family: 'Open Sans', sans-serif;
+  color: #333;
+}
+
+a:visited {
+  color: #61C;
+}
+
+a:focus {
+  outline: thin dotted;
+}
+
+a:hover,
+a:active {
+  color: #c00;
+  outline: 0;
+}
+
+b {
+  font-weight: bold;
+}
+
+pre,
+code {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
+ol {
+  margin: 1em 0;
+  padding: 0 0 0 20px;
+}
+
+footer {
+  max-width: 45em;
+  margin: 0 auto;
+}
+
+footer {
+  padding: 0 0.5em;
+  border-top: 1px solid #ccc;
+}
+
+footer span {
+  float: right;
+  font-style: italic;
+}
+
+/* Smartphones (portrait) */
