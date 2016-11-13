@@ -10,6 +10,9 @@ var canvas = {
   }
 };
 
+var playing = true;
+
+
 
 // Enemies our player must avoid
 var Enemy = function() {
@@ -31,6 +34,7 @@ var Enemy = function() {
   })();
 
   this.speed = Math.floor(Math.random() * (150 - 50) + 50);
+
 };
 
 
@@ -40,22 +44,21 @@ Enemy.prototype.update = function(dt) {
   // You should multiply any movement by the dt parameter
   // which will ensure the game runs at the same speed for
   // all computers.
-
-  this.x = this.x + Math.round(this.speed * dt);
-
-  if (this.x > canvas.width) {
-    this.resetData();
+  if (playing) {
+    this.x = this.x + Math.round(this.speed * dt);
+    if (this.x > canvas.width) {
+      this.resetData();
+    }
   }
 
-  if (this.x + Math.round(101 / 2) == player.x && this.y == player.y) {
-    player.resetData();
-  }
 };
 
 
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
   ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+  // ctx.fillStyle = "#ff0";
+  // ctx.fillRect(this.x,this.y,101,83);
 };
 
 Enemy.prototype.resetData = function() {
@@ -81,6 +84,7 @@ Enemy.prototype.resetData = function() {
 var Player = function() {
   this.sprite = 'images/char-boy.png';
   this.currentMove;
+  this.y = canvas.square.height * 5; //height * columns last column
 
   this.x = (function() {
     var max = 5,
@@ -91,21 +95,45 @@ var Player = function() {
     return (Math.floor(Math.random() * (max - min)) + min) * canvas.square.width;
   })();
 
-  this.y = canvas.square.height * 5; //height * columns last column
 }
 
 Player.prototype.update = function() {
-  var length = allEnemies.length,
-      i;
-  for (i = 0; i < length; i++) {
-    if (this.x + Math.round(101 / 2) == allEnemies[i].x && this.y == allEnemies[i].y) {
-      player.resetData();
+  var i,
+      playerL = this.x,
+      playerT = this.y,
+      playerR = this.x + 70,
+      playerB = this.y + 82,
+      that = this;
+
+
+  if (this.y == 0) {
+    setTimeout(function(){that.resetData()},10);
+  }
+
+  for (i = 0; i < allEnemies.length; i++) {
+    var enemy = allEnemies[i],
+        enemyT = enemy.y,
+        enemyL = enemy.x,
+        enemyR = enemyL + 90,
+        enemyB = enemyT + 82;
+
+    if (playerT <= enemyB && playerB >= enemyT && playerR >= enemyL && playerL <= enemyR) {
+      playing = false;
+      setTimeout(function(){that.resetData()},300);
     }
   }
+
 };
 
 Player.prototype.render = function() {
   ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+  // ctx.fillStyle = "#f00";
+  // ctx.fillRect(this.x,this.y,101,83);
+};
+
+Player.prototype.checkCollision = function() {
+
+  // body...
 };
 
 Player.prototype.handleInput = function(code) {
@@ -125,12 +153,10 @@ Player.prototype.handleInput = function(code) {
     default:
       break;
   }
-  console.log(this.x);
-  console.log(this.y);
-  //when y == 0 reaches the water
 };
 
 Player.prototype.resetData = function() {
+  this.y = canvas.square.height * 5; //height * columns
   this.x = (function() {
     var max = 5,
         min = 0;
@@ -140,7 +166,7 @@ Player.prototype.resetData = function() {
     return (Math.floor(Math.random() * (max - min)) + min) * canvas.square.width;
   })();
 
-  this.y = canvas.square.height * 5; //height * columns
+  playing = true;
 };
 
 
@@ -170,5 +196,7 @@ document.addEventListener('keyup', function(e) {
     39: 'right',
     40: 'down'
   };
-  player.handleInput(allowedKeys[e.keyCode]);
+  if (playing) {
+    player.handleInput(allowedKeys[e.keyCode]);
+  }
 });
