@@ -14,16 +14,15 @@ var playing = true;
 
 
 
+
+
 // Enemies our player must avoid
 var Enemy = function() {
-  // Variables applied to each of our instances go here,
-  // we've provided one for you to get started
-
   // The image/sprite for our enemies, this uses
   // a helper we've provided to easily load images
   this.sprite = 'images/enemy-bug.png';
-
   this.x = 0 - canvas.square.width;
+
   this.y = (function() {
     var max = 4,
         min = 1;
@@ -33,8 +32,7 @@ var Enemy = function() {
     return (Math.floor(Math.random() * (max - min)) + min) * canvas.square.height;
   })();
 
-  this.speed = Math.floor(Math.random() * (150 - 50) + 50);
-
+  this.speed = Math.floor(Math.random() * (500 - 200) + 200);
 };
 
 
@@ -50,7 +48,6 @@ Enemy.prototype.update = function(dt) {
       this.resetData();
     }
   }
-
 };
 
 
@@ -61,8 +58,9 @@ Enemy.prototype.render = function() {
   // ctx.fillRect(this.x,this.y,101,83);
 };
 
+
 Enemy.prototype.resetData = function() {
-  this.speed = Math.floor(Math.random() * (150 - 50) + 50);
+  this.speed = Math.round(Math.random() * (500 - 200) + 200);
 
   this.x = 0 - canvas.square.width;
   this.y = (function() {
@@ -74,6 +72,8 @@ Enemy.prototype.resetData = function() {
     return (Math.floor(Math.random() * (max - min)) + min) * canvas.square.height;
   })();
 };
+
+
 
 
 
@@ -94,8 +94,8 @@ var Player = function() {
     // and then multiply by sqaure height
     return (Math.floor(Math.random() * (max - min)) + min) * canvas.square.width;
   })();
-
 }
+
 
 Player.prototype.update = function() {
   var i,
@@ -105,25 +105,26 @@ Player.prototype.update = function() {
       playerB = this.y + 82,
       that = this;
 
+  if (playing) {
+    if (this.y == 0) {
+      setTimeout(function(){that.resetData()},10);
+    }
 
-  if (this.y == 0) {
-    setTimeout(function(){that.resetData()},10);
-  }
+    for (i = 0; i < allEnemies.length; i++) {
+      var enemy = allEnemies[i],
+      enemyT = enemy.y,
+      enemyL = enemy.x,
+      enemyR = enemyL + 90,
+      enemyB = enemyT + 82;
 
-  for (i = 0; i < allEnemies.length; i++) {
-    var enemy = allEnemies[i],
-        enemyT = enemy.y,
-        enemyL = enemy.x,
-        enemyR = enemyL + 90,
-        enemyB = enemyT + 82;
-
-    if (playerT <= enemyB && playerB >= enemyT && playerR >= enemyL && playerL <= enemyR) {
-      playing = false;
-      setTimeout(function(){that.resetData()},300);
+      if (playerT <= enemyB && playerB >= enemyT && playerR >= enemyL && playerL <= enemyR) {
+        playing = false;
+        setTimeout(function(){that.resetData()},300);
+      }
     }
   }
-
 };
+
 
 Player.prototype.render = function() {
   ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
@@ -131,10 +132,12 @@ Player.prototype.render = function() {
   // ctx.fillRect(this.x,this.y,101,83);
 };
 
+
 Player.prototype.checkCollision = function() {
 
   // body...
 };
+
 
 Player.prototype.handleInput = function(code) {
   switch (code) {
@@ -155,8 +158,10 @@ Player.prototype.handleInput = function(code) {
   }
 };
 
+
 Player.prototype.resetData = function() {
   this.y = canvas.square.height * 5; //height * columns
+
   this.x = (function() {
     var max = 5,
         min = 0;
@@ -170,13 +175,15 @@ Player.prototype.resetData = function() {
 };
 
 
+
+
+
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
 
 var allEnemies = [],
     player = new Player();
-
 
 var enemy1 = new Enemy();
 var enemy2 = new Enemy();
@@ -187,16 +194,26 @@ allEnemies.push(enemy2);
 allEnemies.push(enemy3);
 
 
+
+
+
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
 document.addEventListener('keyup', function(e) {
-  var allowedKeys = {
+  if (e.keyCode == 32) {
+    if (playing) {
+      setTimeout(function() { playing = false;}, 100);
+    } else {
+      setTimeout(function() { playing = true;}, 100);
+    }
+  }
+  var moveKeys = {
     37: 'left',
     38: 'up',
     39: 'right',
     40: 'down'
   };
   if (playing) {
-    player.handleInput(allowedKeys[e.keyCode]);
+    player.handleInput(moveKeys[e.keyCode]);
   }
 });
