@@ -35,10 +35,10 @@ module.exports = function(grunt) {
     critical: {
       test: {
         options: {
-          base: 'labs/performanceTest/',
+          base: 'lab/frontend-nanodegree-mobile-portfolio/',
           css: [
-            'labs/performanceTest/css/style.css',
-            'labs/performanceTest/css/print.css'
+            'lab/frontend-nanodegree-mobile-portfolio/css/style.css',
+            'lab/frontend-nanodegree-mobile-portfolio/css/print.css'
           ],
           inline: true,
           //minify: true,
@@ -47,8 +47,8 @@ module.exports = function(grunt) {
           width: 1440,
           height: 400
         },
-        src: 'labs/performanceTest/index-critical-source.html',
-        dest: 'labs/performanceTest/index-critical.html'
+        src: 'lab/frontend-nanodegree-mobile-portfolio/index.html',
+        dest: 'lab/frontend-nanodegree-mobile-portfolio/index-critical2.html'
       }
     }
 
