@@ -12,8 +12,8 @@ gulp.task('critical-home', function (cb) {
     width: 1440,
     height: 900,
     minify: true,
-    src: 'index.html',
-    dest: 'index-critical.html',
+    src: 'index-source.html',
+    dest: 'index.html',
     css: 'css/style.css'
   });
 });
@@ -27,8 +27,8 @@ gulp.task('critical-project2048', function (cb) {
     width: 1440,
     height: 900,
     minify: true,
-    src: 'project-2048.html',
-    dest: 'project-2048-critical.html',
+    src: 'project-2048-source.html',
+    dest: 'project-2048.html',
     css: 'css/style.css'
   });
 });
@@ -41,8 +41,8 @@ gulp.task('critical-mobile', function (cb) {
     width: 1440,
     height: 900,
     minify: true,
-    src: 'project-mobile.html',
-    dest: 'project-mobile-critical.html',
+    src: 'project-mobile-source.html',
+    dest: 'project-mobile.html',
     css: 'css/style.css'
   });
 });
@@ -55,8 +55,8 @@ gulp.task('critical-webperf', function (cb) {
     width: 1440,
     height: 900,
     minify: true,
-    src: 'project-webperf.html',
-    dest: 'project-webperf-critical.html',
+    src: 'project-webperf-source.html',
+    dest: 'project-webperf.html',
     css: 'css/style.css'
   });
 });
