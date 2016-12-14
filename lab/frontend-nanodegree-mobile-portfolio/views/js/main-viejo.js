@@ -422,59 +422,47 @@ var resizePizzas = function(size) {
   changeSliderLabel(size);
 
    // Returns the size difference to change a pizza element from one size to another. Called by changePizzaSlices(size).
-  // function determineDx (elem, size) {
-  //   var oldWidth = elem.offsetWidth;
-  //   var windowWidth = document.querySelector("#randomPizzas").offsetWidth;
-  //   var oldSize = oldWidth / windowWidth;
+  function determineDx (elem, oldWidth, windowWidth) {
+    var oldSize = oldWidth / windowWidth;
 
-  //   // Changes the slider value to a percent width
-  //   function sizeSwitcher (size) {
-  //     switch(size) {
-  //       case "1":
-  //         return 0.25;
-  //       case "2":
-  //         return 0.3333;
-  //       case "3":
-  //         return 0.5;
-  //       default:
-  //         console.log("bug in sizeSwitcher");
-  //     }
-  //   }
-
-  //   var newSize = sizeSwitcher(size);
-  //   var dx = (newSize - oldSize) * windowWidth;
-
-  //   return dx;
-  // }
-
-  // Iterates through pizza elements on the page and changes their widths
-  function changePizzaSizes(size) {
-    var newW;
-    var randomPizzaContainer = document.querySelectorAll('.randomPizzaContainer');
-    var wC = document.querySelector('#randomPizzas').offsetWidth;
-    debugger;
-    console.log(wC);
-
-    switch(size) {
-      case "1":
-        newW = 25;
-        break;
-      case "2":
-        newW = 33.333;
-        break;
-      case "3":
-        newW = 50;
-        break;
-      default:
-        console.log("bug in sizeSwitcher");
+    // Changes the slider value to a percent width
+    function sizeSwitcher (size) {
+      switch(size) {
+        case "1":
+          return 0.25;
+        case "2":
+          return 0.3333;
+        case "3":
+          return 0.5;
+        default:
+          console.log("bug in sizeSwitcher");
+      }
     }
 
-    for (var i = 0; i < randomPizzaContainer.length; i++) {
-      randomPizzaContainer[i].style.width = newW + '%';
+    var newSize = sizeSwitcher(size);
+    var dx = (newSize - oldSize) * windowWidth;
+
+    return dx;
+  }
+
+  // Iterates through pizza elements on the page and changes their widths
+
+    var pizzas = document.querySelectorAll('.randomPizzaContainer');
+    var oldWidth = 0;
+
+    //Cause force reflow
+    var oldWidth = pizzas[0].offsetWidth;
+    var windowWidth = document.querySelector("#randomPizzas").offsetWidth;
+  function changePizzaSizes() {
+
+    for (var i = 0; i < pizzas.length; i++) {
+      var dx = determineDx(pizzas[i], oldWidth, windowWidth);
+      var newwidth = (oldWidth + dx) + 'px';
+      pizzas[i].style.width = newwidth;
     }
   }
 
-  changePizzaSizes(size);
+  requestAnimationFrame(changePizzaSizes);
 
   // User Timing API is awesome
   window.performance.mark("mark_end_resize");
