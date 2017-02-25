@@ -23,6 +23,12 @@ APP.Main = (function() {
   var storyStart = 0;
   var count = 100;
   var main = $('main');
+
+  var latestKnowScrollY = 0;
+  var ticking = false;
+  var header = $('header');
+  var headerTitles = header.querySelector('.header__title-wrapper');
+
   var inDetails = false;
   var storyLoadCount = 0;
   var localeData = {
@@ -295,10 +301,29 @@ APP.Main = (function() {
 
   });
 
-  main.addEventListener('scroll', function() {
+  main.addEventListener('scroll', onScroll, false);
 
-    var header = $('header');
-    var headerTitles = header.querySelector('.header__title-wrapper');
+  function onScroll() {
+    latestKnowScrollY = main.scrollTop;
+    requestTick();
+  }
+
+  function requestTick() {
+    if (!ticking) {
+      requestAnimationFrame(updateData);
+      ticking = true;
+    }
+  }
+
+  function updateData() {
+    ticking = false;
+    var currentScrollY = latestKnowScrollY;
+
+    ticking = false;
+  }
+
+  main.addEventListener('scroll', function() {
+    console.log(latestKnowScrollY);
     var scrollTopCapped = Math.min(70, main.scrollTop);
     var scaleString = 'scale(' + (1 - (scrollTopCapped / 300)) + ')';
 

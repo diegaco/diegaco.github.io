@@ -68,6 +68,11 @@ a {
   padding: 0 0 0 72px;
   z-index: 1;
   position: fixed;
+
+  //Promote own layer
+  //prevent painting flashing
+  transform: translateZ(0);
+  will-change: transform;
 }
 
 .header__title-wrapper {
