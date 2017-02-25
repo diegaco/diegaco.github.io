@@ -372,7 +372,7 @@
 
   if ( 'serviceWorker' in navigator) {
     window.addEventListener('load', function() {
-      navigator.serviceWorker.register('/service-worker.js').then(function (registration) {
+      navigator.serviceWorker.register('./service-worker.js').then(function (registration) {
         //Registration was succesful
         console.log('ServiceWorker registration was succesful with scope: ', registration.scope);
       }).catch(function (err) {
