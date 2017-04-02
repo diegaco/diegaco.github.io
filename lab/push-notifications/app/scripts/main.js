@@ -94,7 +94,8 @@ function subscribeUser() {
     userVisibleOnly: true,
     applicationServerKey: applicationServerKey
   })
-  .then(function(subscription){
+  .then(function(subscription) {
+    console.log(subscription);
     console.log('User is subscribe');
 
     updateSubscriptionOnServer(subscription);
