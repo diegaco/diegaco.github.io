@@ -1,0 +1,3 @@
+[submodule "lab/catClicker"]
+	path = lab/catClicker
+	url = https://github.com/diegaco/catClicker.git
