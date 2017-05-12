@@ -1,3 +1,6 @@
 [submodule "lab/catClicker"]
 	path = lab/catClicker
 	url = https://github.com/diegaco/catClicker.git
+[submodule "lab/news-aggregator"]
+	path = lab/news-aggregator
+	url = https://github.com/diegaco/news-aggregator.git
