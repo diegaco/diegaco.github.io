@@ -4,3 +4,6 @@
 [submodule "lab/news-aggregator"]
 	path = lab/news-aggregator
 	url = https://github.com/diegaco/news-aggregator.git
+[submodule "lab/frontend-nano-degree-mobile-portfolio"]
+	path = lab/frontend-nano-degree-mobile-portfolio
+	url = https://github.com/diegaco/frontend-nanodegree-mobile-portfolio.git
