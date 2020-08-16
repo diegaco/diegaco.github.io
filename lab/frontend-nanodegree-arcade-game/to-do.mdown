@@ -1,5 +1,0 @@
-#To-Do List
-
-- [] *Play* - Pause States
-- [] *Reset* (Freeze) Play Pause
-- [] *User Interaction* config game
